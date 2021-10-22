@@ -18,4 +18,4 @@ Contributors
 Maintainer
 ----------
 
-* olksndrdevhub
+* olksndrdevhub <oleksandr.romaniuk@protonmail.com>
