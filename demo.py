@@ -15,7 +15,12 @@ import os
 logging.basicConfig(level=logging.DEBUG)
 
 from django.conf import settings
-from django.conf.urls import url
+
+try:
+    from django.urls import re_path as url
+except ImportError:
+    from django.conf.urls import url
+
 from django.core.wsgi import get_wsgi_application
 from django.utils.timezone import now as tznow
 

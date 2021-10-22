@@ -8,7 +8,11 @@ import os
 from django.conf import settings
 from django.template import loader
 from django.http import HttpResponse
-from django.utils.http import urlquote
+try:
+    from django.utils.html import smart_urlquote as urlquote
+except ImportError:
+    from django.utils.http import urlquote
+
 
 try:
     from django.utils.six import BytesIO
