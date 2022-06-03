@@ -9,7 +9,7 @@ from django.template import loader
 from django.utils.html import smart_urlquote
 from xhtml2pdf import pisa
 
-from .exceptions import PDFRenderingError, UnsupportedMediaPathException
+from .exceptions import PDFRenderingError
 
 logger = logging.getLogger("app.pdf")
 logger_x2p = logging.getLogger("app.pdf.xhtml2pdf")
@@ -34,11 +34,8 @@ def fetch_resources(uri, rel):
         path = os.path.join(settings.STATIC_ROOT, uri)
 
     if not os.path.isfile(path):
-        raise UnsupportedMediaPathException(
-            "media urls must start with {} or {}".format(
-                settings.MEDIA_ROOT, settings.STATIC_ROOT
-            )
-        )
+        # Ignore missing images
+        return ''
 
     return path.replace("\\", "/")
 
