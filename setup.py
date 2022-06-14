@@ -23,7 +23,7 @@ readme = open("README.rst").read()
 history = open("HISTORY.rst").read().replace(".. :changelog:", "")
 
 setuptools.setup(
-    name="django-easy-pdf3",
+    name="easy-pdf",
     version=version,
     description="""Django PDF views, the easy way""",
     license="MIT",
