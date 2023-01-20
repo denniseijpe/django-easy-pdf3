@@ -26,6 +26,10 @@ def fetch_resources(uri, rel):
     :rtype: str
     :raises: :exc:`~easy_pdf.exceptions.UnsupportedMediaPathException`
     """
+    if uri.startswith('data:image/'):
+        # If using embedded Base64 encoded image, simply return the uri
+        return uri
+
     if settings.STATIC_URL and uri.startswith(settings.STATIC_URL):
         path = os.path.join(settings.STATIC_ROOT, uri.replace(settings.STATIC_URL, ""))
     elif settings.MEDIA_URL and uri.startswith(settings.MEDIA_URL):
