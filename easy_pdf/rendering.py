@@ -30,6 +30,9 @@ def fetch_resources(uri, rel):
         path = os.path.join(settings.STATIC_ROOT, uri.replace(settings.STATIC_URL, ""))
     elif settings.MEDIA_URL and uri.startswith(settings.MEDIA_URL):
         path = os.path.join(settings.MEDIA_ROOT, uri.replace(settings.MEDIA_URL, ""))
+    elif uri.startswith('data:image/'):
+        # If using embedded Base64 encoded image, simply return the uri
+        return uri
     else:
         path = os.path.join(settings.STATIC_ROOT, uri)
 
